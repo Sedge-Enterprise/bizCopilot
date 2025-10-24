@@ -25,7 +25,7 @@ ai in the business aiding growth
 ---
 
 ## 🏗️ Project Overview
-**BizCopilot** is a modern SaaS platform built to streamline business operations.  
+**BizCopilot** is a Sedge Enterprise's modern SaaS platform built to streamline business operations.  
 It helps users automate repetitive tasks, track key metrics, and manage resources efficiently — all from one intuitive dashboard.
 
 ---
