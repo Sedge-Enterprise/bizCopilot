@@ -44,8 +44,10 @@ It helps users automate repetitive tasks, track key metrics, and manage resource
 
 ## 🧰 Tech Stack
 **Frontend:** HTML · CSS · JavaScript  
-**Backend:** None (Static HTML Project)  
+**Backend:** None (static HTML Project)
 **Deployment:** GitHub Pages
+**Cloud & Tools:** Microsoft Azure + Git + GitHub + VS Code
+**Database:** MongoDB / Firebase
 
 ---
 
