@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<!-- saved from url=(0060)file:///C:/Users/nokut/Downloads/nfamc_case_intake_form.html -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>NFAMC — Case Intake Form</title>
+  <style>
+    body {font-family: Inter, Arial, sans-serif; background: #f7f9fc; margin: 0; color: #1a1a1a;}
+    .container {max-width: 900px; margin: 40px auto; background: #fff; border-radius: 12px; box-shadow: 0 4px 10px rgba(0,0,0,0.05); padding: 24px;}
+    h1 {text-align: center; color: #0b6cf6; margin-bottom: 10px;}
+    p.subtitle {text-align: center; color: #666; font-size: 14px; margin-bottom: 30px;}
+    form {display: grid; grid-template-columns: 1fr 1fr; gap: 16px;}
+    label {font-weight: 600; font-size: 13px; display: block; margin-bottom: 4px;}
+    input, select, textarea {width: 100%; padding: 10px; border: 1px solid #d0d7e3; border-radius: 8px; font-size: 14px;}
+    textarea {resize: vertical; min-height: 80px;}
+    .full {grid-column: 1 / -1;}
+    .section-title {grid-column: 1 / -1; font-weight: 700; margin-top: 20px; color: #0b6cf6; border-bottom: 2px solid #e6ecf5; padding-bottom: 6px;}
+    button {background: #0b6cf6; color: #fff; padding: 10px 18px; border: none; border-radius: 8px; font-weight: 600; cursor: pointer; margin-top: 20px;}
+    button.secondary {background: #eef3ff; color: #0b6cf6; border: 1px solid rgba(11,108,246,0.2);}
+    .actions {grid-column: 1 / -1; display: flex; justify-content: flex-end; gap: 10px;}
+    .required {color: #d21c1c; margin-left: 4px;}
+    .file-list {font-size: 13px; color: #666; margin-top: 6px;}
+    .note {font-size: 13px; color: #777; margin-top: 10px;}
+    @media (max-width: 700px){form{grid-template-columns:1fr}}
+  </style>
+<style>@media print { body { background: #fff; } .container { box-shadow: none; border-radius: 0; } .actions, input[type=file], button.secondary { display: none !important; } a { color: #000 } }</style></head>
+<body>
+  <div class="container">
+    <h1>NFAMC Case Intake Form</h1>
+    <p class="subtitle">Use this form to report, document, and submit cases such as complaints, disputes, or appeals to the National Facilitation Assessment and Moderation Council.</p>
+
+    <form id="caseForm" enctype="multipart/form-data" novalidate="">
+      <div class="section-title">1. Case Information</div>
+      <div>
+        <label for="caseNumber">Case Number</label>
+        <input type="text" id="caseNumber" name="caseNumber" placeholder="Auto or manual entry">
+      </div>
+      <div>
+        <label for="date">Date of Submission<span class="required">*</span></label>
+        <input type="date" id="date" name="date" required="">
+      </div>
+      <div>
+        <label for="category">Case Category<span class="required">*</span></label>
+        <select id="category" name="category" required="">
+          <option value="">-- Select --</option>
+          <option>Complaint</option>
+          <option>Appeal</option>
+          <option>Assessment Dispute</option>
+          <option>Moderation Irregularity</option>
+          <option>General Inquiry</option>
+        </select>
+      </div>
+      <div>
+        <label for="priority">Priority</label>
+        <select id="priority" name="priority">
+          <option value="">-- Select --</option>
+          <option>Low</option>
+          <option>Medium</option>
+          <option>High</option>
+          <option>Urgent</option>
+        </select>
+      </div>
+      <div class="full">
+        <label for="summary">Case Summary<span class="required">*</span></label>
+        <textarea id="summary" name="summary" required="" placeholder="Provide a detailed description of the issue or case."></textarea>
+      </div>
+
+      <div class="section-title">2. Reporter Information</div>
+      <div>
+        <label for="reporterName">Reporter Name<span class="required">*</span></label>
+        <input type="text" id="reporterName" name="reporterName" required="">
+      </div>
+      <div>
+        <label for="role">Role / Capacity</label>
+        <select id="role" name="role">
+          <option value="">-- Select --</option>
+          <option>Assessor</option>
+          <option>Moderator</option>
+          <option>Provider Representative</option>
+          <option>Learner</option>
+          <option>NFAMC Staff</option>
+          <option>Other</option>
+        </select>
+      </div>
+      <div>
+        <label for="email">Email<span class="required">*</span></label>
+        <input type="email" id="email" name="email" required="" placeholder="example@email.com">
+      </div>
+      <div>
+        <label for="phone">Contact Number<span class="required">*</span></label>
+        <input type="tel" id="phone" name="phone" required="" placeholder="+27 82 000 0000">
+      </div>
+      <div class="full">
+        <label for="organisation">Organisation / Training Provider</label>
+        <input type="text" id="organisation" name="organisation">
+      </div>
+
+      <div class="section-title">3. Parties Involved</div>
+      <div class="full">
+        <label for="parties">List names and roles of all parties involved<span class="required">*</span></label>
+        <textarea id="parties" name="parties" required="" placeholder="e.g. Learner: Jane Doe, Assessor: John Smith, Provider: ABC Skills"></textarea>
+      </div>
+
+      <div class="section-title">4. Supporting Documents</div>
+      <div class="full">
+        <label for="attachments">Upload Relevant Files</label>
+        <input type="file" id="attachments" name="attachments" multiple="" accept="application/pdf,image/*">
+        <div id="fileList" class="file-list">No files uploaded.</div>
+      </div>
+
+      <div class="section-title">5. Review &amp; Assignment</div>
+      <div>
+        <label for="assignedTo">Assigned Officer</label>
+        <input type="text" id="assignedTo" name="assignedTo" placeholder="NFAMC reviewer name">
+      </div>
+      <div>
+        <label for="status">Case Status</label>
+        <select id="status" name="status">
+          <option value="">-- Select --</option>
+          <option>New</option>
+          <option>Under Review</option>
+          <option>Resolved</option>
+          <option>Closed</option>
+        </select>
+      </div>
+      <div class="full">
+        <label for="actions">Notes / Review Actions</label>
+        <textarea id="actions" name="actions" placeholder="Add internal notes or actions taken."></textarea>
+      </div>
+
+      <div class="section-title">6. Declaration</div>
+      <div class="full">
+        <label>
+          <input type="checkbox" id="declaration" required=""> I confirm that the above information is true and accurate.<span class="required">*</span>
+        </label>
+      </div>
+      <div class="full">
+        <label for="signature">Typed Signature<span class="required">*</span></label>
+        <input type="text" id="signature" name="signature" required="" placeholder="Your full name as signature">
+      </div>
+
+      <div class="actions"><button type="button" class="" style="margin-right: 8px;">Print / Save as PDF</button>
+        <button type="submit">Submit Case</button>
+        <button type="button" id="saveDraft" class="secondary">Save Draft (Local)</button>
+      </div>
+    </form>
+
+    <div id="result" class="note"></div>
+  </div>
+
+  <script>
+    const attachments = document.getElementById('attachments');
+    const fileList = document.getElementById('fileList');
+    attachments.addEventListener('change', ()=>{
+      const files = Array.from(attachments.files);
+      if(!files.length) { fileList.textContent = 'No files uploaded.'; return; }
+      fileList.innerHTML = files.map(f => `${f.name} (${Math.round(f.size/1024)} KB)`).join('<br>');
+    });
+
+    const form = document.getElementById('caseForm');
+    const result = document.getElementById('result');
+
+    document.getElementById('saveDraft').addEventListener('click', ()=>{
+      const fd = new FormData(form);
+      const obj = {};
+      for (const [k,v] of fd.entries()) { if(v instanceof File) continue; obj[k]=v; }
+      localStorage.setItem('nfamc_case_draft', JSON.stringify(obj));
+      alert('Draft saved locally in your browser.');
+    });
+
+    window.addEventListener('load', ()=>{
+      const data = localStorage.getItem('nfamc_case_draft');
+      if(!data) return;
+      try {
+        const obj = JSON.parse(data);
+        for(const k in obj){ const el=document.getElementById(k); if(el) el.value=obj[k]; }
+      } catch(err){ console.warn('Failed to load draft', err); }
+    });
+
+    form.addEventListener('submit', e => {
+      e.preventDefault();
+      if(!form.checkValidity()) { form.reportValidity(); return; }
+      const fd = new FormData(form);
+      const data = {};
+      fd.forEach((v,k)=>{ if(v instanceof File) return; data[k]=v; });
+      data._files = Array.from(document.getElementById('attachments').files).map(f=>({name:f.name,size:f.size,type:f.type}));
+      data._submittedAt = new Date().toISOString();
+      localStorage.removeItem('nfamc_case_draft');
+      result.innerHTML = `<div style='background:#eef6ff;padding:12px;border-radius:8px;margin-top:10px'><strong>Form submitted (local preview)</strong><pre style='white-space:pre-wrap'>${escapeHtml(JSON.stringify(data,null,2))}</pre></div>`;
+      window.scrollTo({top: result.offsetTop, behavior: 'smooth'});
+    });
+
+    function escapeHtml(s){return s.replaceAll('&','&amp;').replaceAll('<','&lt;').replaceAll('>','&gt;');}
+  </script>
+
+  <!-- PRINT / PDF + SERVER SAMPLE -->
+  <script>
+    // Print handler: opens the browser Print dialog (user can choose Save as PDF)
+    function printForm(){
+      window.print();
+    }
+    // Add a Print button to the actions area
+    (function addPrintButton(){
+      const actions = document.querySelector('.actions');
+      if (!actions) return;
+      const btn = document.createElement('button');
+      btn.type = 'button';
+      btn.textContent = 'Print / Save as PDF';
+      btn.className = '';
+      btn.style.marginRight = '8px';
+      btn.addEventListener('click', printForm);
+      actions.insertBefore(btn, actions.firstChild);
+    })();
+
+    // Print-friendly styles injected for better PDF output
+    const style = document.createElement('style');
+    style.textContent = `@media print { body { background: #fff; } .container { box-shadow: none; border-radius: 0; } .actions, input[type=file], button.secondary { display: none !important; } a { color: #000 } }`;
+    document.head.appendChild(style);
+  </script>
+
+  <div style="max-width:900px;margin:18px auto;padding:12px;font-family:Arial, sans-serif;color:#333;">
+    <h3 style="color:#0b6cf6;margin-bottom:6px">Server-side sample (Node.js + Express)</h3>
+    <p style="margin-top:0;color:#666;font-size:13px">Below is a sample Express endpoint (using <code>multer</code>) that accepts form submissions and file uploads. Save this as <code>server_sample.js</code>, run <code>npm install express multer</code>, then <code>node server_sample.js</code>. This is only an example — adapt to your authentication, storage, and validation requirements.</p>
+    <pre style="background:#f6f9ff;border:1px solid #e6eefb;padding:12px;border-radius:8px;overflow:auto;font-size:13px">const express = require('express');
+const multer = require('multer');
+const path = require('path');
+const app = express();
+
+// Simple local disk storage (for demo only). In production, use secure storage.
+const storage = multer.diskStorage({
+  destination: (req, file, cb) =&gt; cb(null, path.join(__dirname, 'uploads')),
+  filename: (req, file, cb) =&gt; cb(null, Date.now() + '-' + file.originalname)
+});
+const upload = multer({ storage });
+
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+
+app.post('/submit-case', upload.array('attachments'), (req, res) =&gt; {
+  try {
+    const body = req.body; // all form fields
+    const files = req.files.map(f =&gt; ({ filename: f.filename, original: f.originalname, size: f.size }));
+    // TODO: validate, verify signature, save to DB, notify assigned officer, etc.
+    console.log('Received case', body.caseNumber || '(no case number)', 'files:', files);
+    return res.json({ ok: true, received: body, files });
+  } catch (err) {
+    console.error('Upload error', err);
+    return res.status(500).json({ ok: false, error: 'Server error' });
+  }
+});
+
+app.listen(3000, () =&gt; console.log('Server running on http://localhost:3000'));</pre>
+
+    <p style="color:#666;font-size:13px">If you want, I can also provide:
+      </p><ul style="margin:8px 0 0 18px;color:#666">
+        <li>Full Express + React integration example (CORS, validation, DB schema)</li>
+        <li>PHP / Laravel upload handler instead</li>
+        <li>Instructions for saving submissions to Google Drive or S3</li>
+      </ul>
+    <p></p>
+  </div>
+
+
+
+</body></html>
