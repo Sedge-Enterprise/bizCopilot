@@ -1,0 +1,419 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>NFAMC — New Assessor & Moderator Onboarding</title>
+  <style>
+    :root{--accent:#0b6cf6;--muted:#667085;--bg:#f7f9fc;--card:#ffffff}
+    *{box-sizing:border-box}
+    body{font-family:Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial; margin:0; background:var(--bg); color:#0b1726}
+    .container{max-width:980px;margin:28px auto;padding:20px}
+    header{display:flex;gap:16px;align-items:center;margin-bottom:18px}
+    .brand{display:flex;flex-direction:column}
+    h1{margin:0;font-size:20px}
+    p.lead{margin:4px 0 0;color:var(--muted);font-size:13px}
+    .card{background:var(--card);border-radius:12px;padding:18px;box-shadow:0 6px 18px rgba(12,24,40,0.06)}
+    form .grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+    label{display:block;font-size:13px;color:#0b1726;margin-bottom:6px}
+    input[type=text],input[type=email],input[type=date],input[type=tel],select,textarea{width:100%;padding:10px;border:1px solid #e6edf3;border-radius:8px;font-size:14px}
+    textarea{min-height:84px;resize:vertical}
+    .full{grid-column:1/-1}
+    .cols-3{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+    .section-title{font-weight:600;margin:8px 0 10px}
+    .hint{font-size:12px;color:var(--muted);margin-top:6px}
+    .row{display:flex;gap:8px}
+    .actions{display:flex;gap:8px;align-items:center;margin-top:14px}
+    button{background:var(--accent);color:#fff;padding:10px 14px;border-radius:8px;border:0;font-weight:600;cursor:pointer}
+    button.secondary{background:#eef3ff;color:var(--accent);border:1px solid rgba(11,108,246,0.12)}
+    .file-list{font-size:13px;margin-top:8px;color:var(--muted)}
+    .small{font-size:12px;color:var(--muted)}
+    .required{color:#d21c1c;margin-left:6px}
+    /* signature canvas */
+    .sig-wrap{border:1px dashed #dfe7f5;border-radius:8px;padding:8px}
+    canvas{width:100%;height:140px;border-radius:6px;display:block;background:#fff}
+    .preview{background:#fbfdff;border-radius:8px;padding:12px;border:1px solid #eef3f9;margin-top:10px}
+    /* responsive */
+    @media (max-width:780px){.grid{grid-template-columns:1fr}.cols-3{grid-template-columns:1fr}header{flex-direction:column;align-items:flex-start}.container{padding:12px}}
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <div style="width:56px;height:56px;border-radius:12px;background:linear-gradient(135deg,#0b6cf6,#3ab0ff);display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700">NF</div>
+      <div class="brand">
+        <h1>NFAMC — Assessor & Moderator Onboarding</h1>
+        <p class="lead">Complete this form to register as a new assessor or moderator with the National Facilitation Assessment and Moderation Council.</p>
+      </div>
+    </header>
+
+    <form id="onboardForm" class="card" enctype="multipart/form-data" novalidate>
+
+      <!-- PERSONAL -->
+      <div>
+        <div class="section-title">1. Personal Information</div>
+        <div class="grid">
+          <div>
+            <label for="fullName">Full name <span class="required">*</span></label>
+            <input id="fullName" name="fullName" type="text" required placeholder="e.g. Nokuthula Mangweni" />
+          </div>
+          <div>
+            <label for="idNumber">ID / Passport Number <span class="required">*</span></label>
+            <input id="idNumber" name="idNumber" type="text" required placeholder="e.g. 8001015004087" />
+          </div>
+          <div>
+            <label for="dob">Date of birth <span class="required">*</span></label>
+            <input id="dob" name="dob" type="date" required />
+          </div>
+          <div>
+            <label for="gender">Gender</label>
+            <select id="gender" name="gender">
+              <option value="">-- Select --</option>
+              <option>Female</option>
+              <option>Male</option>
+              <option>Non-binary</option>
+              <option>Prefer not to say</option>
+            </select>
+          </div>
+
+          <div>
+            <label for="nationality">Nationality</label>
+            <input id="nationality" name="nationality" type="text" placeholder="e.g. South African" />
+          </div>
+          <div>
+            <label for="province">Province <span class="required">*</span></label>
+            <select id="province" name="province" required>
+              <option value="">-- Select province --</option>
+              <option>Eastern Cape</option>
+              <option>Free State</option>
+              <option>Gauteng</option>
+              <option>KwaZulu-Natal</option>
+              <option>Limpopo</option>
+              <option>Mpumalanga</option>
+              <option>North West</option>
+              <option>Northern Cape</option>
+              <option>Western Cape</option>
+            </select>
+          </div>
+
+          <div>
+            <label for="city">City / Town</label>
+            <input id="city" name="city" type="text" />
+          </div>
+          <div>
+            <label for="physicalAddress">Physical address</label>
+            <input id="physicalAddress" name="physicalAddress" type="text" />
+          </div>
+
+          <div class="full">
+            <label for="postalAddress">Postal address</label>
+            <input id="postalAddress" name="postalAddress" type="text" />
+          </div>
+
+          <div>
+            <label for="phone">Contact number <span class="required">*</span></label>
+            <input id="phone" name="phone" type="tel" required placeholder="e.g. +27 82 089 9152" />
+          </div>
+          <div>
+            <label for="email">Email address <span class="required">*</span></label>
+            <input id="email" name="email" type="email" required placeholder="e.g. name@example.com" />
+          </div>
+        </div>
+      </div>
+
+      <hr style="margin:18px 0;border:0;border-top:1px solid #eef3fb" />
+
+      <!-- PROFESSIONAL -->
+      <div>
+        <div class="section-title">2. Professional Details</div>
+        <div class="grid">
+          <div>
+            <label for="qualification">Highest qualification <span class="required">*</span></label>
+            <input id="qualification" name="qualification" type="text" required placeholder="e.g. B.Ed, Diploma in Assessment" />
+          </div>
+          <div>
+            <label for="specialization">Field of expertise / specialization</label>
+            <input id="specialization" name="specialization" type="text" placeholder="e.g. Early Childhood, Engineering, Business Studies" />
+          </div>
+
+          <div>
+            <label for="experience">Years of experience</label>
+            <select id="experience" name="experience">
+              <option value="">-- Select --</option>
+              <option>0-1</option>
+              <option>2-4</option>
+              <option>5-9</option>
+              <option>10+</option>
+            </select>
+          </div>
+          <div>
+            <label for="employer">Current employer / organisation</label>
+            <input id="employer" name="employer" type="text" />
+          </div>
+
+          <div>
+            <label for="jobTitle">Current job title / role</label>
+            <input id="jobTitle" name="jobTitle" type="text" />
+          </div>
+          <div>
+            <label for="employmentType">Employment type</label>
+            <select id="employmentType" name="employmentType">
+              <option value="">-- Select --</option>
+              <option>Full-time</option>
+              <option>Part-time</option>
+              <option>Freelance / Contractor</option>
+              <option>Self-employed</option>
+            </select>
+          </div>
+
+          <div class="full">
+            <label for="professionalSummary">Short professional summary / CV (brief)</label>
+            <textarea id="professionalSummary" name="professionalSummary" placeholder="Summarise roles, responsibilities, and relevant assessment/moderation experience"></textarea>
+          </div>
+        </div>
+      </div>
+
+      <hr style="margin:18px 0;border:0;border-top:1px solid #eef3fb" />
+
+      <!-- CREDENTIALS -->
+      <div>
+        <div class="section-title">3. Assessment & Moderation Credentials</div>
+        <div class="grid">
+          <div>
+            <label for="nqfLevel">NQF level(s) qualified to assess</label>
+            <select id="nqfLevel" name="nqfLevel">
+              <option value="">-- Select --</option>
+              <option>1</option>
+              <option>2</option>
+              <option>3</option>
+              <option>4</option>
+              <option>5</option>
+              <option>6</option>
+              <option>7</option>
+              <option>8</option>
+              <option>9</option>
+            </select>
+          </div>
+          <div>
+            <label for="etdpNumber">ETDP SETA number (if applicable)</label>
+            <input id="etdpNumber" name="etdpNumber" type="text" />
+          </div>
+
+          <div>
+            <label for="regNumber">Assessor / Moderator registration number (if registered)</label>
+            <input id="regNumber" name="regNumber" type="text" />
+          </div>
+          <div>
+            <label for="accreditationBody">Accreditation body</label>
+            <input id="accreditationBody" name="accreditationBody" type="text" placeholder="e.g. QCTO, SAQA, SETA" />
+          </div>
+
+          <div class="full">
+            <label for="quals">Qualification(s) you assess / moderate</label>
+            <input id="quals" name="quals" type="text" placeholder="List unit standards or qualification titles separated by commas" />
+          </div>
+
+          <div class="full">
+            <label>Upload supporting documents (certificates, ID, registration) <span class="small">(PDF, JPG, PNG — up to 5 files)</span></label>
+            <input id="files" name="files" type="file" accept="application/pdf,image/*" multiple />
+            <div id="fileList" class="file-list small">No files uploaded</div>
+          </div>
+
+        </div>
+      </div>
+
+      <hr style="margin:18px 0;border:0;border-top:1px solid #eef3fb" />
+
+      <!-- LOGISTICS -->
+      <div>
+        <div class="section-title">4. Additional Information</div>
+        <div class="grid">
+          <div>
+            <label for="avail">Availability (days / times)</label>
+            <input id="avail" name="avail" type="text" placeholder="e.g. Weekdays mornings, Weekends" />
+          </div>
+          <div>
+            <label for="travel">Willing to travel?</label>
+            <select id="travel" name="travel">
+              <option value="">-- Select --</option>
+              <option>Yes - nationwide</option>
+              <option>Yes - within province</option>
+              <option>No</option>
+            </select>
+          </div>
+          <div class="full">
+            <label for="otherInfo">Other relevant information</label>
+            <textarea id="otherInfo" name="otherInfo"></textarea>
+          </div>
+        </div>
+      </div>
+
+      <hr style="margin:18px 0;border:0;border-top:1px solid #eef3fb" />
+
+      <!-- DECLARATION + SIGNATURE -->
+      <div>
+        <div class="section-title">5. Declaration & Consent</div>
+        <div class="grid">
+          <div class="full">
+            <label>
+              <input id="declaration" name="declaration" type="checkbox" required />
+              I confirm that all information provided is true and accurate. <span class="required">*</span>
+            </label>
+            <div class="small hint">By signing you consent to NFAMC verifying your credentials with issuing bodies.</div>
+          </div>
+
+          <div class="full">
+            <label>Signature (draw below) <span class="required">*</span></label>
+            <div class="sig-wrap">
+              <canvas id="sigCanvas"></canvas>
+              <div class="row" style="margin-top:8px">
+                <button type="button" id="clearSig" class="secondary">Clear</button>
+                <button type="button" id="saveSig" class="secondary">Save Signature Preview</button>
+                <div id="sigStatus" class="small" style="margin-left:auto;color:var(--muted)"></div>
+              </div>
+            </div>
+            <div id="sigPreview" class="preview" style="display:none"></div>
+          </div>
+
+          <div class="full">
+            <label for="signedName">Typed name (accepts typed signature)</label>
+            <input id="signedName" name="signedName" type="text" />
+          </div>
+
+          <div class="full">
+            <label for="signedDate">Date</label>
+            <input id="signedDate" name="signedDate" type="date" />
+          </div>
+        </div>
+      </div>
+
+      <hr style="margin:18px 0;border:0;border-top:1px solid #eef3fb" />
+
+      <div class="actions">
+        <button type="submit">Submit registration</button>
+        <button type="button" id="saveDraft" class="secondary">Save draft (local)</button>
+        <div class="small" style="margin-left:auto;color:var(--muted)">Fields marked with <span class="required">*</span> are required</div>
+      </div>
+
+      <div id="result" style="margin-top:14px"></div>
+
+    </form>
+
+    <p style="margin-top:8px;font-size:13px;color:var(--muted)">Prototype built in plain HTML/CSS/JS. Use the submit button to validate locally; files are not uploaded to any server in this demo.</p>
+
+  </div>
+
+  <script>
+    // Basic client-side behaviour: file list, signature capture, save draft, submit preview
+    const filesInput = document.getElementById('files');
+    const fileList = document.getElementById('fileList');
+    filesInput.addEventListener('change', () => {
+      const files = Array.from(filesInput.files);
+      if (!files.length) return fileList.textContent = 'No files uploaded';
+      fileList.innerHTML = files.map(f => `${f.name} (${Math.round(f.size/1024)} KB)`).join('<br>');
+    });
+
+    // Signature canvas
+    const canvas = document.getElementById('sigCanvas');
+    const ctx = canvas.getContext('2d');
+    let drawing=false;
+    // set actual pixel size for crispness
+    function resizeCanvas(){
+      const rect = canvas.getBoundingClientRect();
+      canvas.width = rect.width * devicePixelRatio;
+      canvas.height = rect.height * devicePixelRatio;
+      canvas.style.width = rect.width +'px';
+      canvas.style.height = rect.height +'px';
+      ctx.scale(devicePixelRatio, devicePixelRatio);
+      ctx.lineWidth=2; ctx.lineCap='round'; ctx.strokeStyle='#222';
+    }
+    window.addEventListener('resize', resizeCanvas);
+    resizeCanvas();
+
+    function getPointer(e){
+      if (e.touches) return {x: e.touches[0].clientX, y: e.touches[0].clientY};
+      return {x: e.clientX, y: e.clientY};
+    }
+
+    function startDraw(e){drawing=true; const p = getPointer(e); const r=canvas.getBoundingClientRect(); ctx.beginPath(); ctx.moveTo(p.x - r.left, p.y - r.top); e.preventDefault();}
+    function draw(e){ if(!drawing) return; const p=getPointer(e); const r=canvas.getBoundingClientRect(); ctx.lineTo(p.x - r.left, p.y - r.top); ctx.stroke(); }
+    function endDraw(){ drawing=false; }
+
+    canvas.addEventListener('mousedown', startDraw);
+    canvas.addEventListener('mousemove', draw);
+    canvas.addEventListener('mouseup', endDraw);
+    canvas.addEventListener('mouseleave', endDraw);
+    canvas.addEventListener('touchstart', startDraw);
+    canvas.addEventListener('touchmove', draw);
+    canvas.addEventListener('touchend', endDraw);
+
+    document.getElementById('clearSig').addEventListener('click', ()=>{ ctx.clearRect(0,0,canvas.width,canvas.height); document.getElementById('sigPreview').style.display='none'; document.getElementById('sigStatus').textContent=''; });
+
+    document.getElementById('saveSig').addEventListener('click', ()=>{
+      const data = canvas.toDataURL('image/png');
+      if (isCanvasBlank(canvas)) { document.getElementById('sigStatus').textContent='Signature is empty'; return; }
+      const preview = document.getElementById('sigPreview');
+      preview.innerHTML = '<strong>Signature preview:</strong><br><img src="'+data+'" style="max-width:100%;height:auto;border-radius:6px;border:1px solid #eef6ff" />';
+      preview.style.display='block';
+      document.getElementById('sigStatus').textContent='Saved';
+    });
+
+    function isCanvasBlank(c){ const blank = document.createElement('canvas'); blank.width=c.width; blank.height=c.height; return c.toDataURL() === blank.toDataURL(); }
+
+    // Save draft to localStorage
+    document.getElementById('saveDraft').addEventListener('click', ()=>{
+      const data = new FormData(document.getElementById('onboardForm'));
+      const obj = {};
+      for (const [k,v] of data.entries()){
+        if (v instanceof File) continue;
+        obj[k]=v;
+      }
+      // signature (if saved)
+      const sig = isCanvasBlank(canvas) ? null : canvas.toDataURL('image/png');
+      obj._signature = sig;
+      localStorage.setItem('nfamc_onboard_draft', JSON.stringify(obj));
+      alert('Draft saved locally in your browser. Use the Save draft button again to update.');
+    });
+
+    // Load draft if present
+    window.addEventListener('load', ()=>{
+      const raw = localStorage.getItem('nfamc_onboard_draft');
+      if (!raw) return;
+      try{ const obj = JSON.parse(raw); for (const k in obj){ const el = document.getElementById(k); if (el && el.tagName){ if (el.type==='checkbox') el.checked = obj[k]; else el.value = obj[k]; }} if (obj._signature){ const img = new Image(); img.onload = ()=>{ ctx.clearRect(0,0,canvas.width,canvas.height); ctx.drawImage(img,0,0,canvas.width/devicePixelRatio,canvas.height/devicePixelRatio); document.getElementById('sigPreview').innerHTML = '<strong>Signature preview:</strong><br><img src="'+obj._signature+'" style="max-width:100%;height:auto;border-radius:6px;border:1px solid #eef6ff" />'; document.getElementById('sigPreview').style.display='block'; document.getElementById('sigStatus').textContent='Loaded from draft'; }; img.src = obj._signature; }
+      }catch(e){console.warn('Failed loading draft',e)}
+    });
+
+    // Submit handler: validate required fields and render a JSON preview
+    document.getElementById('onboardForm').addEventListener('submit', async (e)=>{
+      e.preventDefault();
+      const form = e.target;
+      if (!form.checkValidity()){
+        form.reportValidity();
+        return;
+      }
+      // ensure signature or typed name
+      if (isCanvasBlank(canvas) && !document.getElementById('signedName').value){ alert('Please provide a signature by drawing or typing your name.'); return; }
+
+      const fd = new FormData(form);
+      // capture filenames and signature
+      const files = Array.from(document.getElementById('files').files).map(f=>({name:f.name,size:f.size,type:f.type}));
+      const sigData = isCanvasBlank(canvas) ? null : canvas.toDataURL('image/png');
+      const out = {};
+      fd.forEach((v,k)=>{ if (v instanceof File) return; out[k]=v; });
+      out._uploadedFiles = files;
+      out._signature = sigData ? '[signature image data]' : (document.getElementById('signedName').value || null);
+      out._submittedAt = new Date().toISOString();
+
+      // show preview (in real app, you'd POST to server)
+      const result = document.getElementById('result');
+      result.innerHTML = '<div style="padding:12px;border-radius:8px;background:#fff;border:1px solid #eef6ff"><strong>Preview (form validated locally)</strong><pre style="white-space:pre-wrap;margin-top:8px">'+escapeHtml(JSON.stringify(out,null,2))+'</pre></div>';
+      // clear local draft after submit
+      localStorage.removeItem('nfamc_onboard_draft');
+      window.scrollTo({top:result.offsetTop - 20, behavior:'smooth'});
+    });
+
+    function escapeHtml(s){ return s.replaceAll('&','&amp;').replaceAll('<','&lt;').replaceAll('>','&gt;'); }
+
+  </script>
+</body>
+</html>
